@@ -30,7 +30,7 @@ describe '[STEP3] 仕上げのテスト' do
       fill_in 'user[name]', with: user.name
       fill_in 'user[password]', with: user.password
       click_button 'Log in'
-      logout_link = find_all('a')[4].text
+      logout_link = find_all('a')[4].native.inner_text
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
       is_expected.to have_content 'successfully'
@@ -384,10 +384,10 @@ describe '[STEP3] 仕上げのテスト' do
       it 'Aboutリンクのアイコンが表示される' do
         is_expected.to have_selector '.fas.fa-link'
       end
-      it 'Sign upリンクのアイコンが表示される' do
+      it 'sign upリンクのアイコンが表示される' do
         is_expected.to have_selector '.fas.fa-user-plus'
       end
-      it 'Log inリンクのアイコンが表示される' do
+      it 'loginリンクのアイコンが表示される' do
         is_expected.to have_selector '.fas.fa-sign-in-alt'
       end
     end
@@ -411,7 +411,7 @@ describe '[STEP3] 仕上げのテスト' do
       it 'Booksリンクのアイコンが表示される' do
         is_expected.to have_selector '.fas.fa-book-open'
       end
-      it 'Log outリンクのアイコンが表示される' do
+      it 'log outリンクのアイコンが表示される' do
         is_expected.to have_selector '.fas.fa-sign-out-alt'
       end
     end

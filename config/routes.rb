@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+   devise_for :users
   get '/top' => 'homes#top'
   get 'home/about' => 'home#about', as: 'about'
   # get 'homes/about' => 'homes#about', as: 'about'
-  devise_for :users
+ 
   # controllers: {
   # registrations: 'users/registrations',
   # sessions: 'users/sessions'
@@ -15,5 +16,10 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :users, only: [:show, :edit, :index, :update,]
+  resources :users, only: [:show, :edit, :index, :update,] do
+    member do
+      get :follows, :followers
+    end
+      resource :relationships, only: [:create, :destroy]
+    end  
 end

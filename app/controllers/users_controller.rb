@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       render :users
     end
   end
-  
+
   def index
     @users = User.all
     @user = current_user
@@ -34,6 +34,16 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_users
+  end
+  
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_users
+  end  
 
   private
 

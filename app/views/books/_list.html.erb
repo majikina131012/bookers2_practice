@@ -4,25 +4,33 @@
         <p><%= image_tag user.get_profile_image(100,100) %></p>
         <table class="table">
           <tbody>
-            <tr>
-              <th>name</th>
-              <th>introduction</th>
-            </tr>
-            <tr>
-              <td><%=user.name %></td>
-              <td><%=user.introduction %></td>
-            </tr>
+            <tr><th>name</th><td><%= user.name %></td></tr>
+            <tr><th>introduction</th><td><%= user.introduction %></td></tr>
+            
+            <tr><th>follows</th>
+              <td><%= link_to follows_user_path(@user.id) do %>
+                    <%= user.followers.count %>
+                  <% end %>  
+              </td></tr>
+            
+            <tr><th>followers</th>
+              <td><%= link_to followers_user_path(@user.id) do %>
+                    <%= user.followeds.count %>
+                  <% end %>  
+              </td></tr>
+              
           </tbody>
         </table>
+        <%= render 'relationships/btn', user: @user %>
         <% if user.id == current_user.id %>
-            <p><%= link_to  edit_user_path(user) do %>
+            <p><%= link_to  edit_user_path(user), class: "btn btn-warning btn-sm btn-block" do %>
                   <i class="fas fa-user-cog"></i>
                 <% end %>
             </p>
         <% else %>
-            <p><%= link_to edit_user_path(user.id) do %>
+            <p><%= link_to edit_user_path(user.id), class: "btn btn-warning btn-sm btn-block" do %>
                   <i class="fas fa-user-cog"></i>
-                <% end %>  
+                <% end %>
             </p>
         <% end %>
         <h2 class="mt-3">New book</h2>
@@ -31,6 +39,6 @@
           <%= f.text_field :title %>
           <h4>Opinion</h4>
           <%= f.text_area :body %>
-          <%= f.submit 'Create Book' %>
+          <%= f.submit 'Create Book', class: "btn btn-warning btn-sm btn-block" %>
         <% end %>
       </div>

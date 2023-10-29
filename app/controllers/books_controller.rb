@@ -4,6 +4,13 @@ class BooksController < ApplicationController
     @book = Book.new
     @users = User.all
     @user = current_user
+    
+    # 過去一週間のいいね合計カウントが多い順にソート
+    @books = @books.sort_by do |book|
+    # ここで過去一週間のいいね合計カウントを計算
+    # 仮に favorites_count メソッドを使う例
+    book.favorites_count_for_last_week
+    end.reverse
   end
   
   def create

@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
+    @today_book =  @books.posted_today
+    @yesterday_book = @books.posted_yesterday
+    @this_week_book = @books.posted_this_week
+    @last_week_book = @books.posted_last_week
   end
 
   def edit
@@ -34,16 +38,16 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  
+
   def follows
     user = User.find(params[:id])
     @users = user.following_users
   end
-  
+
   def followers
     user = User.find(params[:id])
     @users = user.follower_users
-  end  
+  end
 
   private
 

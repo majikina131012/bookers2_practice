@@ -28,4 +28,25 @@ class Book < ApplicationRecord
     last_week_end = Time.current
     self.favorites.where(created_at: last_week_start..last_week_end).count
   end
+  
+  # 本日の投稿数をカウント
+  scope :posted_today, -> {
+    where("created_at >= ?", Time.zone.now.beginning_of_day)
+  }
+
+  # 昨日の投稿数をカウント
+  scope :posted_yesterday, -> {
+    where("created_at >= ? AND created_at < ?", 1.day.ago.beginning_of_day, Time.zone.now.beginning_of_day)
+  }
+
+  # 今週の投稿数をカウント
+  scope :posted_this_week, -> {
+    where("created_at >= ?", Time.zone.now.beginning_of_week)
+  }
+
+  # 先週の投稿数をカウント
+  scope :posted_last_week, -> {
+    where("created_at >= ? AND created_at < ?", 1.week.ago.beginning_of_week, Time.zone.now.beginning_of_week)
+  }
 end
+

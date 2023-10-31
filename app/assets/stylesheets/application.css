@@ -34,3 +34,13 @@ li {
 .navbar {
   background-color: red;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%; /* テーブル幅を100%に設定 */
+  }
+  th, td {
+    border: 1px solid #000; /* 枠線のスタイルを設定 */
+    padding: 8px; /* セル内の余白を設定 */
+    text-align: left; /* テキストを左寄せに設定 */
+  }

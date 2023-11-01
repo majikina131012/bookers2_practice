@@ -45,45 +45,45 @@
             <% end %>
         </tbody>
         </table>
-        <table>
+        <table class="today_book">
           <thead>
             <tr>
-              <th>今日の投稿数</th>
-              <th>前日の投稿数</th>
-              <th>前日比</th>
+              <th class="today_book_t">今日の投稿数</th>
+              <th class="today_book_t">前日の投稿数</th>
+              <th class="today_book_t">前日比</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><%= @today_book.count %></td>
-              <td><%= @yesterday_book.count %></td>
+              <td class="today_book_t"><%= @today_book.count %></td>
+              <td class="today_book_t"><%= @yesterday_book.count %></td>
               <% if @yesterday_book.count > 0 %>
                 <% the_day_before_ratio = (@today_book.count - @yesterday_book.count) / @yesterday_book.count %>
               <% else %>
                 <% the_day_before_ratio = 0 %>
               <% end %>
-              <td><%= (the_day_before_ratio * 100).round %>%</td>
+              <td class="today_book_t"><%= (the_day_before_ratio * 100).round %>%</td>
             </tr>
           </tbody>
         </table>
-        <table>
+        <table class="today_book">
           <thead>
             <tr>
-              <th>今週の投稿数</th>
-              <th>先週の投稿数</th>
-              <th>前週比</th>
+              <th class="today_book_t">今週の投稿数</th>
+              <th class="today_book_t">先週の投稿数</th>
+              <th class="today_book_t">前週比</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><%= @this_week_book.count %></td>
-              <td><%= @last_week_book.count %></td>
+              <td class="today_book_t"><%= @this_week_book.count %></td>
+              <td class="today_book_t"><%= @last_week_book.count %></td>
               <% if @last_week_book.count > 0 %>
                 <% the_week_before_ratio = (@this_week_book.count - @last_week_book.count) / @last_week_book.count %>
               <% else %>
                 <% the_week_before_ratio = 0 %>
               <% end %>
-              <td><%= (the_week_before_ratio * 100).round %>%</td>
+              <td class="today_book_t"><%= (the_week_before_ratio * 100).round %>%</td>
             </tr>
           </tbody>
         </table>

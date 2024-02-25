@@ -32,9 +32,9 @@
           <% end %>
         </table>
 
-        <canvas id="bookChart"></canvas>    # グラフを表示させたい場所に追加
-
+        <canvas id="bookChart"></canvas>
           <script>
+            document.addEventListener('turbolinks:load', function() {
             const ctx = document.getElementById('bookChart');
 
             new Chart(ctx, {
@@ -60,6 +60,7 @@
                 },
               },
             });
+          });
           </script>
 
       </div>

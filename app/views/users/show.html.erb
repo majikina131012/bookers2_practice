@@ -25,28 +25,18 @@
             </td>
             <td><%= book.body %></td>
             <td>
-              <% if book.favorited_by?(current_user) %>  
-                <%= link_to book_favorites_path(book.id), method: :delete do %>
-                  <i class="fas fa-heart"></i>
-                  <%= book.favorites.count %>
-                <% end %>
-              <% else %>
-                <%= link_to book_favorites_path(book.id), method: :post do %>
-                  <i class="fas fa-heart"></i>
-                  <%= book.favorites.count %>
-                <% end %>
-              <% end %>
+              <%= render 'favorites/btn', book: book %>
             </td>
             <td> <%= link_to "#{book.book_comments.count}", book_path(book.id) %></td>
           </tr>
           <% end %>
         </table>
-        
-        <canvas id="bookChart"></canvas>    # グラフを表示させたい場所に追加 
+
+        <canvas id="bookChart"></canvas>    # グラフを表示させたい場所に追加
 
           <script>
             const ctx = document.getElementById('bookChart');
-            
+
             new Chart(ctx, {
               type: 'line',
               data: {
@@ -71,7 +61,7 @@
               },
             });
           </script>
-        
+
       </div>
     </div>
   </div>

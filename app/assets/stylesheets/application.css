@@ -44,3 +44,12 @@ li {
     padding: 8px; /* セル内の余白を設定 */
     text-align: left; /* テキストを左寄せに設定 */
   }
+  
+  .error {
+  border: 2px solid red;
+  padding: 10px; /* 赤い枠線が見やすくなるように適切な余白を追加 */
+}
+
+.text_field.error {
+  border: 2px solid red;
+}

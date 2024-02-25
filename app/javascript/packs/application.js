@@ -14,6 +14,10 @@ import "bootstrap";
 import "../stylesheets/application" 
 import '@fortawesome/fontawesome-free/js/all'
 
+import Chart from "chart.js/auto";
+global.Chart = Chart;
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

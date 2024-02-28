@@ -6,19 +6,19 @@
           <tbody>
             <tr><th>name</th><td><%= user.name %></td></tr>
             <tr><th>introduction</th><td><%= user.introduction %></td></tr>
-            
+
             <tr><th>follows</th>
               <td><%= link_to follows_user_path(@user.id) do %>
                     <%= user.followers.count %>
-                  <% end %>  
+                  <% end %>
               </td></tr>
-            
+
             <tr><th>followers</th>
               <td><%= link_to followers_user_path(@user.id) do %>
                     <%= user.followeds.count %>
-                  <% end %>  
+                  <% end %>
               </td></tr>
-              
+
           </tbody>
         </table>
         <%= render 'relationships/btn', user: @user %>
@@ -36,9 +36,9 @@
         <h2 class="mt-3">New book</h2>
         <%= form_with model: Book.new do |f| %>
           <h4>Title</h4>
-          <%= f.text_field :title %>
+          <div style="width: 260.2px;"><%= f.text_field :title, class: "form-control" %></div>
           <h4>Opinion</h4>
-          <%= f.text_area :body %>
-          <%= f.submit 'Create Book', class: "btn btn-warning btn-sm btn-block" %>
+          <div style="width: 260.2px;"><%= f.text_area :body, class: "form-control" %></div>
+          <%= f.submit 'Create Book', class: "btn btn-warning btn-sm btn-block mt-3" %>
         <% end %>
       </div>

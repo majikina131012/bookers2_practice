@@ -1,0 +1,16 @@
+<table class="table">
+  <% book.book_comments.each do |book_comment| %>
+  <tr>
+    <th>
+      <%= image_tag book_comment.user.get_profile_image(100,100) %></br>
+      <%= book_comment.user.name %>
+    </th>
+    <td><%= book_comment.comment %></td>
+    <td>
+    <% if book_comment.user == current_user %>
+      <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class:"btn btn-danger", remote: true, data: {"turbolinks" => false} %>
+    <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>

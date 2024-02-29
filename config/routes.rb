@@ -2,6 +2,7 @@ Rails.application.routes.draw do
    devise_for :users
   get '/top' => 'homes#top'
   get 'home/about' => 'home#about', as: 'about'
+  get 'search' => 'searches#search', as: 'search'
   # get 'homes/about' => 'homes#about', as: 'about'
  
   # controllers: {

@@ -3,6 +3,9 @@
     <div class="row">
       <%= render 'books/list', user: @user, book: @book %>
       <div class="col-md-8 offset-md-1">
+        <div>
+          <%= render 'searches/search' %>
+        </div>
         <h1>Users</h1>
         <table class="table">
           <thead>

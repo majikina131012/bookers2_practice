@@ -1,0 +1,38 @@
+<h2>検索結果</h2>
+<table class="table">
+  <% if @model == 'book' %>
+    <tr>
+      <th>book's user</th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+
+    <% @result.each do |book| %>
+    <tr>
+      <td><%= image_tag book.user.get_profile_image(100,100) %><br>
+      <%= book.user.name %></td>
+      <td><%= link_to book_path(book.id) do %>
+            <%= book.title %>
+          <% end %>
+      </td>
+      <td><%= book.body %></td>
+    </tr>
+    <% end %>
+  <% else %>
+    <thead>
+      <tr>
+        <th>image</th>
+        <th>name</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @result.each do |user| %>
+        <tr>
+          <td><%= image_tag user.get_profile_image(100,100) %></td>
+          <td><%=user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

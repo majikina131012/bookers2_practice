@@ -10,10 +10,12 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  #自分がフォローした
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
-  
   has_many :following_users, through: :followers, source: :followed
+  
+  #自分をフォローした
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :follower_users, through: :followeds, source: :follower
   
   validates :name,length: { minimum: 2, maximum: 20 }, uniqueness: true
